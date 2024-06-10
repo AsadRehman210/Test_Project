@@ -2,8 +2,9 @@ import { InitialState, Action } from "../types/types";
 
 const initialState: InitialState = {
     userData: [],
-    SearchedValue: null,
-    valueMatch: true
+    SearchedValue: "",
+    valueMatch: true,
+    sortFilter: "select"
 };
 
 export const userReducer = (state: InitialState = initialState, action: Action): InitialState => {
@@ -17,18 +18,18 @@ export const userReducer = (state: InitialState = initialState, action: Action):
         }
         case "FETCH_USER_DATA": {
             let { SearchedValue } = state;
-            let valueMatch = true; 
+            let valueMatch = true;
             let filteredData = action.payload.map((user, index) => ({
                 ...user,
                 rank: index // Add the original index to each user
             }));
 
-            const searchedUserIndex = filteredData.findIndex(user => user.name === SearchedValue);
+            const searchedUserIndex = filteredData.findIndex(user => user.name.includes(SearchedValue));
 
             if (searchedUserIndex === -1) {
                 filteredData = [];
-                SearchedValue = null;
-                valueMatch = false; 
+                SearchedValue = "";
+                valueMatch = false;
             } else {
                 // Logic for when the user is found
                 const top10Users = filteredData.slice(0, 10);
@@ -56,6 +57,39 @@ export const userReducer = (state: InitialState = initialState, action: Action):
                 ...state,
                 valueMatch: action.payload
             };
+        case "SET_SORT_FILTER": {
+            const { userData } = state;
+            const sortedData = [...userData];
+
+            switch (action.payload) {
+                case "lowestRank":
+                    sortedData.sort((a, b) => {
+                        if (a.rank === b.rank) {
+                            return a.name.localeCompare(b.name); // Alphabetical order
+                        }
+                        return b.rank - a.rank; // Sort by rank
+                    });
+                    break;
+                case "a-z":
+                    sortedData.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case "z-a":
+                    sortedData.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+                case "select":
+                    // No sorting applied, return original data
+                    sortedData.sort((a, b) => a.rank - b.rank);
+                    break;
+                default:
+                    break;
+            }
+
+            return {
+                ...state,
+                userData: sortedData,
+                sortFilter: action.payload
+            };
+        }
         default:
             return state;
     }

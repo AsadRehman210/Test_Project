@@ -1,31 +1,36 @@
-export interface User {
-    name: string | null;
-    bananas: number | null;
+export type User= {
+    name: string ;
+    bananas: number;
     rank: number;
 }
 
-export interface InitialState {
+export type InitialState= {
     userData: User[];
-    SearchedValue: string | null;
+    SearchedValue: string;
     valueMatch: boolean;
+    sortFilter: string;
 }
 
-export interface UserSearchValueAction {
+export type UserSearchValueAction= {
     type: "User_Search_Value";
     payload: string;
 }
 
-export interface FetchUserDataAction {
+export type FetchUserDataAction ={
     type: "FETCH_USER_DATA";
     payload: User[];
 }
 
-export interface ValueMatchedAction {
+export type ValueMatchedAction= {
     type: "Value_Matched";
     payload: boolean;
 }
+export type SetSortFilterAction= {
+    type: "SET_SORT_FILTER";
+    payload: string
+}
 
-export type Action = UserSearchValueAction | FetchUserDataAction | ValueMatchedAction;
+export type Action = UserSearchValueAction | FetchUserDataAction | ValueMatchedAction | SetSortFilterAction;
 
 export interface UserSearchValueFunction {
     (value: string): UserSearchValueAction;
@@ -40,5 +45,8 @@ export interface UserModification {
     bananas: number;
     rank: number;
 }
+export interface SetSortFilterFunction {
+    (value: string): SetSortFilterAction
+}
 
-export type UserActionTypes = UserSearchValueAction | FetchUserDataAction | ValueMatchedAction;
+export type UserActionTypes = UserSearchValueAction | FetchUserDataAction | ValueMatchedAction | SetSortFilterAction ;

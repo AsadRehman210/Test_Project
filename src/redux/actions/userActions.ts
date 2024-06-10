@@ -1,4 +1,4 @@
-import { UserSearchValueFunction, ValueMatchedFunction, UserModification, UserActionTypes } from "../types/types";
+import { UserSearchValueFunction, ValueMatchedFunction, UserModification, UserActionTypes, SetSortFilterFunction } from "../types/types";
 
 export const userSearchValue: UserSearchValueFunction = (value: string) => {
     return {
@@ -13,6 +13,13 @@ export const valueMatched: ValueMatchedFunction = (value: boolean) => {
         payload: value
     }
 }
+
+export const setSortFilter: SetSortFilterFunction = (filter: string) => {
+    return {
+        type: "SET_SORT_FILTER",
+        payload: filter
+    };
+};
 
 export interface RawUser {
     bananas: number;

@@ -1,4 +1,9 @@
-/* Set base font size */
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
   /* 1rem = 10px */
@@ -7,7 +12,6 @@ html {
 body {
   font-family: "Arial", sans-serif;
   font-size: 1.6rem;
-  /* Default font size 16px */
   margin: 0;
   padding: 0;
   background-color: #f9f9f9;
@@ -19,11 +23,12 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #eaeaea;
+  padding: 2rem 0;
 }
 
 .App_container {
   min-width: 50rem;
-  max-width: 80rem;
+  max-width: 90rem;
   background-color: #fff;
   padding: 2rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -118,6 +123,28 @@ body {
 
 .icon_size {
   font-size: 3rem !important;
+}
+
+.select_col {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.select_col label {
+  margin-right: 10px;
+}
+.select_col select[name=Filter] {
+  font-size: 1.5rem !important;
+  padding: 10px 15px !important;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.select_col select[name=Filter] option {
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 726px) {

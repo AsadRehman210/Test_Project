@@ -4,8 +4,9 @@ import { InitialState, Action } from '../types/types';
 
 const initialState: InitialState = {
     userData: [],
-    SearchedValue: null,
+    SearchedValue: '',
     valueMatch: true,
+    sortFilter:''
 };
 
 describe('user reducer', () => {

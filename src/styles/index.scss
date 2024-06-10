@@ -1,9 +1,9 @@
-
-*{
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
+
 html {
     font-size: 62.5%;
     /* 1rem = 10px */
@@ -23,11 +23,12 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #eaeaea;
+    padding: 2rem 0;
 }
 
 .App_container {
     min-width: 50rem;
-    max-width: 80rem;
+    max-width: 90rem;
     background-color: #fff;
     padding: 2rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -124,36 +125,69 @@ body {
     font-size: 3rem !important;
 }
 
+
+
+.select_col {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+
+    label {
+        margin-right: 10px;
+    }
+
+    select[name="Filter"] {
+        font-size: 1.5rem !important;
+        padding: 10px 15px !important;
+        font-size: 14px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        option {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+
 @media screen and (max-width: 726px) {
     html {
         font-size: 55%;
     }
 
 }
+
 @media screen and (max-width: 520px) {
     html {
         font-size: 50%;
     }
 
 }
+
 @media screen and (max-width: 420px) {
     html {
         font-size: 40%;
     }
 
 }
+
 @media screen and (max-width: 350px) {
     html {
         font-size: 35%;
     }
 
 }
+
 @media screen and (max-width: 290px) {
     html {
         font-size: 30%;
     }
 
 }
+
 @media screen and (max-width: 250px) {
     html {
         font-size: 25%;
